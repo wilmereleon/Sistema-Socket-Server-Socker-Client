@@ -47,9 +47,16 @@ socket.emit('delete', { table: 'EMPLEADOS', id: 1 });
 
 // Escuchar los resultados de las operaciones
 socket.on('result', (data) => {
+  let message;
   if (data.success) {
-    document.getElementById('result').textContent = `La operación ${data.operation} se ha realizado con éxito. Resultado: ${JSON.stringify(data.result)}`;
+    message = `La operación ${data.operation} se ha realizado con éxito. Resultado: ${JSON.stringify(data.result)}`;
   } else {
-    document.getElementById('result').textContent = `La operación ${data.operation} ha fallado`;
+    message = `La operación ${data.operation} ha fallado`;
   }
+  
+  // Imprimir el mensaje en la consola
+  console.log(message);
+  
+  // Mostrar el mensaje en el HTML
+  document.getElementById('result').textContent = message;
 });
