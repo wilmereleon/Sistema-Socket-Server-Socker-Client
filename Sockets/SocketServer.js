@@ -6,7 +6,7 @@ io.on('connection', (socket) => {
     console.log('Nuevo cliente conectado');
     socket.emit('connected', 'Estás conectado al servidor');
     // ...
-  });
+});
 
 // Crear la conexión a la base de datos
 const db = mysql.createConnection({
@@ -32,7 +32,7 @@ io.on('connection', (socket) => {
     const query = 'INSERT INTO empleados SET ?';
     db.query(query, data, (err, result) => {
       if (err) throw err;
-      socket.emit('result', result);
+      socket.emit('result', { operation: 'insert', success: true, result });
     });
   });
 
@@ -41,7 +41,7 @@ io.on('connection', (socket) => {
     const query = 'UPDATE empleados SET ? WHERE id = ?';
     db.query(query, [data.values, data.id], (err, result) => {
       if (err) throw err;
-      socket.emit('result', result);
+      socket.emit('result', { operation: 'update', success: true, result });
     });
   });
 
@@ -50,7 +50,7 @@ io.on('connection', (socket) => {
     const query = 'SELECT * FROM empleados WHERE id = ?';
     db.query(query, id, (err, result) => {
       if (err) throw err;
-      socket.emit('result', result);
+      socket.emit('result', { operation: 'select', success: true, result });
     });
   });
 
@@ -59,15 +59,7 @@ io.on('connection', (socket) => {
     const query = 'DELETE FROM empleados WHERE id = ?';
     db.query(query, id, (err, result) => {
       if (err) throw err;
-      socket.emit('result', result);
+      socket.emit('result', { operation: 'delete', success: true, result });
     });
   });
 });
-
-socket.on('insert', (data) => {
-    const query = 'INSERT INTO empleados SET ?';
-    db.query(query, data, (err, result) => {
-      if (err) throw err;
-      socket.emit('result', { operation: 'insert', success: true, result });
-    });
-  });
