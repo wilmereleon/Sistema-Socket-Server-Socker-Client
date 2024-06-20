@@ -1,6 +1,13 @@
 const io = require('socket.io')(3307);
 const mysql = require('mysql');
 
+// Crear mensaje de conexión
+io.on('connection', (socket) => {
+    console.log('Nuevo cliente conectado');
+    socket.emit('connected', 'Estás conectado al servidor');
+    // ...
+  });
+
 // Crear la conexión a la base de datos
 const db = mysql.createConnection({
   host: 'localhost',
@@ -56,3 +63,11 @@ io.on('connection', (socket) => {
     });
   });
 });
+
+socket.on('insert', (data) => {
+    const query = 'INSERT INTO empleados SET ?';
+    db.query(query, data, (err, result) => {
+      if (err) throw err;
+      socket.emit('result', { operation: 'insert', success: true, result });
+    });
+  });
