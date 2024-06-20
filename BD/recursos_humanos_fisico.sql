@@ -134,4 +134,26 @@ INSERT INTO HISTORICOS (emphist_fecha_retiro, emphist_cargo_ID, emphist_dpto_ID)
 ('2020-04-04', 4, 4),
 ('2020-05-05', 5, 5);
 
-        
+-- Ver el contenido de la tabla PAISES
+SELECT * FROM PAISES;
+
+-- Ver el contenido de la tabla CIUDADES
+SELECT * FROM CIUDADES;
+
+-- Ver el contenido de la tabla LOCACIONES
+SELECT * FROM LOCACIONES;
+
+-- Ver el contenido de la tabla DEPARTAMENTOS
+SELECT * FROM DEPARTAMENTOS;
+
+-- Ver el contenido de la tabla CARGOS
+SELECT * FROM CARGOS;
+
+-- Ver el contenido de la tabla EMPLEADOS
+SELECT * FROM EMPLEADOS;
+
+-- Ver el contenido de la tabla HISTORICOS
+SELECT * FROM HISTORICOS;
+
+-- Ver el contenido de las tablas en la base de datos recursos_humanos_fisico
+SHOW TABLES FROM recursos_humanos_fisico;
