@@ -3,7 +3,7 @@ const socket = io.connect('http://localhost:3000');
 
 // Mensaje de conexión
 socket.on('connected', (message) => {
-  document.getElementById('status').textContent = message;
+  console.log('Status:', message); // Cambiado para usar console.log
 });
 
 // Insertar un empleado
@@ -52,7 +52,4 @@ socket.on('result', (data) => {
   
   // Imprimir el mensaje en la consola
   console.log(message);
-  
-  // Mostrar el mensaje en el HTML
-  document.getElementById('result').textContent = message;
 });
