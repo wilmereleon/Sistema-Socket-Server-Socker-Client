@@ -39,7 +39,7 @@ socket.emit('update', {
 socket.emit('select', { id: 1 });
 
 // Eliminar un empleado
-socket.emit('delete', { id: 1 });
+socket.emit('delete', { id: 3 });
 
 // Escuchar los resultados de las operaciones
 socket.on('result', (data) => {
