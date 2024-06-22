@@ -8,23 +8,19 @@ socket.on('connected', (message) => {
 
 // Insertar un empleado
 socket.emit('insert', { 
-  table: 'EMPLEADOS', 
-  values: { 
-    empl_primer_nombre: 'Juan', 
-    empl_segundo_nombre: 'Perez', 
-    empl_email: 'juan.perez@example.com', 
-    empl_fecha_nac: '1980-01-01', 
-    empl_sueldo: 7000.00, 
-    empl_comision: 500.00, 
-    empl_cargo_ID: 1, 
-    empl_Gerente_ID: null, 
-    empl_dpto_ID: 1 
-  } 
+  empl_primer_nombre: 'Juan', 
+  empl_segundo_nombre: 'Perez', 
+  empl_email: 'juan.perez@example.com', 
+  empl_fecha_nac: '1980-01-01', 
+  empl_sueldo: 7000.00, 
+  empl_comision: 500.00, 
+  empl_cargo_ID: 1, 
+  empl_Gerente_ID: null, 
+  empl_dpto_ID: 1 
 });
 
 // Actualizar un empleado
 socket.emit('update', { 
-  table: 'EMPLEADOS', 
   id: 1, 
   values: { 
     empl_primer_nombre: 'Pedro', 
@@ -40,10 +36,10 @@ socket.emit('update', {
 });
 
 // Consultar un empleado
-socket.emit('select', { table: 'EMPLEADOS', id: 1 });
+socket.emit('select', { id: 1 });
 
 // Eliminar un empleado
-socket.emit('delete', { table: 'EMPLEADOS', id: 1 });
+socket.emit('delete', { id: 1 });
 
 // Escuchar los resultados de las operaciones
 socket.on('result', (data) => {
