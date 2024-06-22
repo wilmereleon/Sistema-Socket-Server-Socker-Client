@@ -157,3 +157,7 @@ SELECT * FROM HISTORICOS;
 
 -- Ver el contenido de las tablas en la base de datos recursos_humanos_fisico
 SHOW TABLES FROM recursos_humanos_fisico;
+
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '';
+FLUSH PRIVILEGES;
