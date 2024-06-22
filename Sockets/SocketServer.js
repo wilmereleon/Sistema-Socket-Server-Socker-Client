@@ -1,4 +1,4 @@
-const io = require('socket.io')(3307);
+const io = require('socket.io')(3000);
 const mysql = require('mysql');
 
 // Configuración de la conexión a la base de datos usando pool
